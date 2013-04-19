@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">JavaInfo</string>
+    <string name="subject">Subject</string>
+    <string name="question">Question</string>
+    <string name="answer">Answer</string>
+	<string name="show_answer">Show Answer</string>
+	<string name="next_question">Next Question</string>
+	<string name="new_subject">New Subject</string>
+	<string name="test">test</string>
+	<string name="answer_pre_text">Tap here for answer</string>
+	<string name="question_pre_text">To see the first question, tap here.&lt;br&gt;&lt;br&gt;You can always tap here to go to the next question</string>
+	<string name="question_post_text">There are no more questions in this section</string>
+    <string name="menu_question_feedback">Submit feedback</string>
+</resources>
