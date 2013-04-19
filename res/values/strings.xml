@@ -13,4 +13,5 @@
 	<string name="question_pre_text">To see the first question, tap here.&lt;br&gt;&lt;br&gt;You can always tap here to go to the next question</string>
 	<string name="question_post_text">There are no more questions in this section</string>
     <string name="menu_question_feedback">Submit feedback</string>
+    <string name="menu_submit_question">Submit new question</string>
 </resources>

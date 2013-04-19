@@ -10,25 +10,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_margin="@dimen/space_between_question_answer"
-        android:layout_weight=".5"
+        android:layout_weight="1"
+        android:background="@color/text_background"
+        android:clickable="true"
         android:onClick="showNextQuestion"
+        android:fillViewport="true"
         android:orientation="vertical" >
 
         <TextView
             android:id="@+id/question"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/text_background"
             android:clickable="true"
             android:onClick="showNextQuestion"
             android:text="@string/test"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/light_text" />
+            android:textColor="@color/dark_text" />
 
-    </LinearLayout>
+    </ScrollView>
 
     <ImageView 
         android:id="@+id/imageView1"
@@ -38,24 +42,28 @@
         android:layout_gravity="center"
         android:gravity="center"/> 
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_margin="@dimen/space_between_question_answer"
-        android:layout_weight=".5"
+        android:layout_weight="1"
+        android:background="@color/text_background"
+        android:clickable="true"
         android:onClick="showAnswer"
+        android:fillViewport="true"
         android:orientation="vertical" >
 
         <TextView
             android:id="@+id/answer"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/text_background"
             android:clickable="true"
             android:onClick="showAnswer"
             android:text="@string/test"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/light_text" />
+            android:textColor="@color/dark_text" />
 
-    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
