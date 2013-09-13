@@ -1427,7 +1427,7 @@ public class QuestionUtil {
 		rawQuestions.add("1312~JQuery~What are some non getter/setter selector methods?~.append()<br>.clone()");
 		rawQuestions.add("1313~JQuery~What is the difference between .remove() and .detach()?~Both return the removed elements, but .detach() is the only one that keeps their events and data. ");
 		rawQuestions.add("1314~JQuery~What is the difference between .text() and .val()?~.text() returns the content between tags.<br>.val() returns the value attribute's value of a tag.");
-		rawQuestions.add("1315~JQuery~How do you create new elements?~$(\"&lt;a href='someLink'&gt;link text&lt/a&gt;\");<br>or<br>$(\"&lt;a/&gt;\", {<br>&nbsp;&nbsphtml: \"some description\",<br>&nbsp;&nbsp;href: \"someLink\"<br>});");
+		rawQuestions.add("1315~JQuery~How do you create new elements?~$(\"&lt;a href='someLink'&gt;link text&lt/a&gt;\");<br>or<br>$(\"&lt;a/&gt;\", {<br>&nbsp;&nbsp;html: \"some description\",<br>&nbsp;&nbsp;href: \"someLink\"<br>});");
 		rawQuestions.add("1316~JQuery~Are these objects equal (===):<br>var first = $(\"a\");<br>var second = $(\"a\");?~No, becuase the elements are wrapped in unique jQuery objects.<br>However, first.get(0) === second.get(0) returns true;");
 		rawQuestions.add("1317~JQuery~If you get an object from a selector, and then modify the element not using that selector, does the selector update?~No.");
 		rawQuestions.add("1318~JQuery~How do you traverse using selectors?~Use:<br>.parent()<br>.parents()<br>.parentsUntil()<br>.closest()<br>.children()<br>.find()<br>.prev()<br>.next()<br>.siblings()<br>.nextAll()<br>.nextUntil()<br>.prevAll()<br>.prevUntil");
@@ -1461,7 +1461,7 @@ public class QuestionUtil {
 		rawQuestions.add("1346~Javascript~What is the difference between == and ===?~== might run type conversions before the comparison, === won't.<br>ex: 0 == \"\" is true, 0 === \"\" is false.");
 		rawQuestions.add("1347~Javascript~How can you check if something is NaN?~isNaN(someExpression) works. NaN == NaN does not work and returns false.");
 		rawQuestions.add("1348~Javascript~How can || be used as a null checking operator?~name || \"someone\" will return name if it is not null. If name is null, \"someone\" will be returned.");
-		rawQuestions.add("1349~Javascript~Is there function oerloading in javascript?~No. If you try overloading the function, the last one declared will be the only one that is run.<br>A javascript function will take any number of arguments.");
+		rawQuestions.add("1349~Javascript~Is there function overloading in javascript?~No. If you try overloading the function, the last one declared will be the only one that is run.<br>A javascript function will take any number of arguments.");
 		rawQuestions.add("1350~Javascript~In what cases do variables shadow variables with the same name vs. creating a new scope?~Functions create new scope. The let keyword also allows shadowing. Everything else shadows.");
 		rawQuestions.add("1351~Javascript~What are three ways to create an object in javascript?~person = new Object(); person.name = 'bob';<br>person={name:'bob'};<br>function person(name) { this.name = name }; person = new person('bob');");
 		rawQuestions.add("1352~Javascript~What is the difference between calling delete on an object property and setting it to null?~Calling delete actually removes the property.");
@@ -1527,6 +1527,13 @@ public class QuestionUtil {
 		rawQuestions.add("1412~CSS~What is the CSS content property?~It can be used with :before or :after selectors to supply");
 		rawQuestions.add("1413~CSS~In CSS3, how can you use a font the client does not have?~@font-face { font-family: someFont; src: url('some.orf.or.ttf.file'); }");
 		rawQuestions.add("1414~CSS~What are some CSS3 selectors?~:first-child<br>:last-child<br>:nth-child(odd, even, or some math experssion like 3n+1)<br>:first-of-type<br>:last-of-type<br>:nth-of-type");
+		rawQuestions.add("1415~HTML5~How can you detect if a certain HTML5 tag works in a browser?~if (!!document.createElement('someElement').someMethodOnTheElement)<br><br>ex: if (!!document.createElement('video').canPlayType)<br>ex: if (!!document.createElement('canvas').getContext)");
+		rawQuestions.add("1416~HTML5~How do you draw a single pixel?~You have to use a datamap or rectangle. It's a choice you need to make based speed. Usually, the rect method is faster.<br><br>Rect method:<br>function plotPixel(x,y,r,g,b,ctx) {<br>&nbsp;&nbsp;var c=document.getElementById('myCanvas');<br>&nbsp;&nbsp;var ctx=c.getContext('2d');<br>&nbsp;&nbsp;ctx.fillStyle = 'rgba('+r+','+g+','+b+','+(255)+')';<br>&nbsp;&nbsp;ctx.fillRect( x, y, 1, 1 );<br>}<br><br>DataMap method:<br>function plotPixel(x,y,r,g,b) {<br>&nbsp;&nbsp;var id = myContext.createImageData(1,1);<br>&nbsp;&nbsp;var d  = id.data;<br>&nbsp;&nbsp;d[0] = r;<br>&nbsp;&nbsp;d[1] = g;<br>&nbsp;&nbsp;d[2] = b;<br>&nbsp;&nbsp;d[3] = 255;<br>&nbsp;&nbsp;myContext.putImageData( id, x, y );<br>}");
+		rawQuestions.add("1417~HTML5~How do you use HTML5 local storage?~localStorage.setItem(key, value);<br>localStorage.getItem(key);<br>localStorage.someProperty = something;<br>something = localStorage.someProperty;<br><br>Session storage (erased when the window is closed) is used the same way, with 'sessionStorage' replacing 'localStorage'");
+		rawQuestions.add("1418~HTML5~What are some HTML5 inputs tags?~color<br>date<br>datetime<br>datetime-local<br>email<br>month<br>number<br>range<br>search<br>tel<br>time<br>url<br>week");
+		rawQuestions.add("1419~HTML5~What are some HTML5 tags?~canvas<br>video<br>audio<br>source<br>embed<br>track<br>datalist<br>keygen<br>output<br>article<br>aside<br>bdi<br>command<br>details<br>dialog<br>summary<br>figure<br>figcaption<br>footer<br>header<br>mark<br>meter<br>nav<br>progress<br>ruby<br>rt<br>rp<br>section<br>time<br>wbr");
+		rawQuestions.add("1420~HTML5~What tags are supposed to be removed in HTML5?~acronym<br>applet<br>basefont<br>bit<br>center<br>dir<br>font<br>frame<br>frameset<br>noframes<br>strike<br>tt");
+		rawQuestions.add("1421~HTML5~What are some HTML5 canvas context methods?~scale()<br>rotate()<br>translate()<br>transform()<br>strokeText()<br>fillText()<br>beginPath()<br>arc()<br>lineTo()<br>stroke()<br>fillRect()");
 
 		return rawQuestions;
 	}
