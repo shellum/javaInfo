@@ -1485,7 +1485,7 @@ public class QuestionUtil {
 		rawQuestions.add("1370~Javascript~If<br>var a = null;<br>what will<br>a == undefined<br>return?~true");
 		rawQuestions.add("1371~Javascript~Will delete affect anything in an object's prototype?~no");
 		rawQuestions.add("1372~Javascript~What does 'this' refer to in a inner function (function inside an actual function)?~By default, it refers to the global scope. By having the outer function create a variable 'var that = this;', 'that' can be used in the inner function to access the parent function's scope instead of the global scope.");
-		rawQuestions.add("1373~Javascript~What is apply?~apply is a method that all functions have. It lets you apply a method from some object and apply some other object's context to it when it is run.<br>ex:<br>var person={<br>&nbsp;&nbsp;age:3,<br>&nbsp;&nbsp;getAge : function() {<br>&nbsp;&nbsp;&nbsp;&nbsp;return this.age;<br>&nbsp;&nbsp;}<br>};<br><br>var car = {age:4};<br><br>alert(person.getAge.apply(car));<br>");
+		rawQuestions.add("1373~Javascript~What is apply?~apply is a method that all functions have. It lets you take a method from some object and apply some other object's context to it when it is run.<br>ex:<br>var person={<br>&nbsp;&nbsp;age:3,<br>&nbsp;&nbsp;getAge : function() {<br>&nbsp;&nbsp;&nbsp;&nbsp;return this.age;<br>&nbsp;&nbsp;}<br>};<br><br>var car = {age:4};<br><br>alert(person.getAge.apply(car));<br>");
 		rawQuestions.add("1374~Javascript~What is 'arguments'?~arguments is an implicit parameter, like this, that is passed to functions. It is an array like object of all the parameters passed into the function.");
 		rawQuestions.add("1375~Javascript~Does calling a function with the new keyword have an effect on what is returned from that function?~Yes. If nothing is returned, 'this' will be returned.");
 		rawQuestions.add("1376~Javascript~What are Function.prototype and Object.prototype?~They are maps for adding properties and methods to all functions or objects.");
@@ -1534,7 +1534,9 @@ public class QuestionUtil {
 		rawQuestions.add("1419~HTML5~What are some HTML5 tags?~canvas<br>video<br>audio<br>source<br>embed<br>track<br>datalist<br>keygen<br>output<br>article<br>aside<br>bdi<br>command<br>details<br>dialog<br>summary<br>figure<br>figcaption<br>footer<br>header<br>mark<br>meter<br>nav<br>progress<br>ruby<br>rt<br>rp<br>section<br>time<br>wbr");
 		rawQuestions.add("1420~HTML5~What tags are supposed to be removed in HTML5?~acronym<br>applet<br>basefont<br>bit<br>center<br>dir<br>font<br>frame<br>frameset<br>noframes<br>strike<br>tt");
 		rawQuestions.add("1421~HTML5~What are some HTML5 canvas context methods?~scale()<br>rotate()<br>translate()<br>transform()<br>strokeText()<br>fillText()<br>beginPath()<br>arc()<br>lineTo()<br>stroke()<br>fillRect()");
-
+		rawQuestions.add("1422~Javascript~What id the difference between apply and call?~apply takes an array as a second parameter to give parameters.<br>call takes as second..nth parameters actual parameters.<br>ex: a.apply(this, [1,2,3]);<br>vs<br>a.call(this, 1, 2, 3);");
+		rawQuestions.add("1423~Javascript~What is a self invoked function?~It is a function that is invoked right after it is declared, and can be used for getting a new scope.<br>ex: (function () {<br>&nbsp;&nbsp;var x=1;<br>})();");
+		rawQuestions.add("1424~Javascript~What does someObject.prototype = new Something(); do?~It sets up someObject to inherit from 'Something'.<br>The constructor for 'Something' is run when this is executed.");
 		return rawQuestions;
 	}
 		
