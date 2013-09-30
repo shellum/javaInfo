@@ -1551,7 +1551,16 @@ public class QuestionUtil {
 		rawQuestions.add("1436~Node.js~How do you handle errors in Express?~app.error(function (err, req, res, next) { /*Do Something*/});");
 		rawQuestions.add("1437~Node.js~How can you use dynamic routes in Express?~app.get('/user/:id', function () {<br>&nbsp;&nbsp;send('your id is ' + req.params.id);<br>});");
 		rawQuestions.add("1438~Node.js~How can Expression check the Accept or Content-Type request headers?~req.accepts('someValue'); // Returns a bool for Accept<br><br>req.is('someValue'); // Returns a bool for Content-Type");
-
+		rawQuestions.add("1439~Patterns~What are patterns?~They are:<br><br>1 - A proven solutions<br>2 - Reusable<br>3 - A common language for communicating intent<br>4 - A process");
+		rawQuestions.add("1440~Patterns~What are some pattern categories?~Structural (decorator, facad, etc.)<br>Behavioral (mediator, observer, etc.)<br>Creational (factory, prototype, etc.)");
+		rawQuestions.add("1442~Javascript~What is ECMAscript?~It is a specification. Javascript is an implementation of the ECMA specification.");
+		rawQuestions.add("1443~Javascript~How do you check if an object is a prototype of another?~a.isPrototypeOf(c)<br><br>This also returns true if there is an intermediate prototype (a -&gt; b -&gt; c).");
+		rawQuestions.add("1444~Javascript~If you modify a prototype property, do all pre-existing objects with that prototype see the change?~Only if you are changing the prototype object.<br><br>Changing an inherited property on a non-prototype object, only changes it for the object.");
+		rawQuestions.add("1445~Javascript~How can you set an object's prototype?~var person={alive:true};<br>var bob = Object.create(person);<br>bob.alive // true<br><br>var person={alive:true};<br>function Bob(){};<br>Bob.prototype = person;<br>bob = new Bob();<br>bob.alive // true<br><br>A prototype can only be set at object creation. It cannot be changed after an object is instantiated.");
+		rawQuestions.add("1446~Javascript~How can you add properties to an object?~var obj = {};<br>obj.new1 = 'hi';<br>obj['new2'] = 'hi';<br>Object.defineProperty(obj, 'new3', {value: 'hi'});<br>Object.defineProperties(obj, {'new4': {value: 'hi'}});");
+		rawQuestions.add("1447~Javascript~What is the difference between defining a function inside a function, and defining a function on a function's prototype?<br><br>Example:<br>function Person() {<br>&nbsp;&nbsp;function go() {}<br>}<br><br>function Person() {}<br>Person.prototype.go = function() {}~Defining methods on the prototype helps the method be more consistent across object instances.<br>If it was defined inside the object's constructor, you would not be able to modify the function on the prototype and have it be reflected in all pre-existing objects.");
+		rawQuestions.add("1448~Javascript~How can you access properties of an instantiated function?~function Person() {<br>&nbsp;&nbsp;this.age = 30;<br>}<br>var p = new Person();<br>p.age; // 30<br><br>function Person() {<br>&nbsp;&nbsp;var age = 30;<br>&nbsp;&nbsp;return {<br>&nbsp;&nbsp;&nbsp;&nbsp;getAge: function() {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return age;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;}<br>}<br>var p = new Person();<br>p.getAge(); // 30<br><br>The second option has private member variables because it returns a closure that remembers its context (vars in scope).");
+		
 		return rawQuestions;
 	}
 		
