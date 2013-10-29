@@ -15,6 +15,8 @@ public class QuestionUtil {
     
     public static String CURRENT_QUESTION_ID = null;
     public static int totalQuestions = 0;
+    
+    // Cache questions for searching
     private static List<Question> lowerCaseQuestions;
 
     private static final String STARRED_QUESTIONS = "*Starred Questions";

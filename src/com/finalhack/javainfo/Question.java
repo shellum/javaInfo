@@ -1,6 +1,8 @@
 package com.finalhack.javainfo;
 
-public class Question {
+import java.io.Serializable;
+
+public class Question implements Serializable {
 	
 	public String subject;
 	public String question;

@@ -1,5 +1,6 @@
 package com.finalhack.javainfo;
 
+import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.List;
 
@@ -26,6 +27,10 @@ public class QuestionAnswerActivity extends Activity {
 	// Shared preferences info
 	public static final String SHARED_PREFS_LOCATION = "sharedPrefs";
 	public static final String SHARED_PREFS_STARRED = "starred";
+	
+	// Bundle keys
+	public static final String BUNDLE_CURRENT_QUESTIONS = "currentQuestions";
+	public static final String BUNDLE_CURRENT_QUESTION = "currentQuestion";
 
 	// Save out subject specific question list
 	private List<Question> questionList;
@@ -42,6 +47,7 @@ public class QuestionAnswerActivity extends Activity {
 	TouchPoint nextQuestionTouchPoint;
 
 	// Setup the initial screen
+	@SuppressWarnings("unchecked")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -68,6 +74,18 @@ public class QuestionAnswerActivity extends Activity {
 		}
 		nextQuestionTouchPoint = actionBar.addTouchPoint(method, this, R.drawable.ic_action_next);
 
+		if (savedInstanceState != null) {
+			questionList = (List<Question>)savedInstanceState.get(BUNDLE_CURRENT_QUESTIONS);
+			currentQuestion = (Question)savedInstanceState.get(BUNDLE_CURRENT_QUESTION);
+		}
+		
+	}
+	
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		outState.putSerializable(BUNDLE_CURRENT_QUESTIONS, (Serializable) questionList);
+		outState.putSerializable(BUNDLE_CURRENT_QUESTION, currentQuestion);
 	}
 
 	// Check to see if a question is starred
@@ -180,25 +198,32 @@ public class QuestionAnswerActivity extends Activity {
 	public void onResume() {
 		super.onResume();
 
-		// Find out what subject matter we should be displaying
-		String subject = getIntent().getExtras().getString(EXTRA_KEY_SUBJECT);
-		String searchText = getIntent().getExtras().getString(EXTRA_KEY_SEARCH);
-		
-		// Get all the questions for later filtering
-		List<String> allQuestions = QuestionUtil.getQuestionList();
-		
-		// If there is no subject, it is a custom search
-		if (subject == null) {
-			questionList = QuestionUtil.getSearchedQuestions(allQuestions, searchText, this);
+		if (questionList == null) {
+			// Find out what subject matter we should be displaying
+			String subject = getIntent().getExtras().getString(EXTRA_KEY_SUBJECT);
+			String searchText = getIntent().getExtras().getString(EXTRA_KEY_SEARCH);
+			
+			// Get all the questions for later filtering
+			List<String> allQuestions = QuestionUtil.getQuestionList();
+			
+			// If there is no subject, it is a custom search
+			if (subject == null) {
+				questionList = QuestionUtil.getSearchedQuestions(allQuestions, searchText, this);
+			} else {
+				// Lookup all questions for the subject
+				questionList = QuestionUtil.getQuestionList(allQuestions, subject, this);
+			}
+			
+			QuestionUtil.totalQuestions = questionList.size();
+			
+			populateTextView(questionView, String.format(getResources().getString(R.string.question_pre_text), QuestionUtil.totalQuestions));
+			populateTextView(answerView, getResources().getString(R.string.answer_pre_text));
 		} else {
-			// Lookup all questions for the subject
-			questionList = QuestionUtil.getQuestionList(allQuestions, subject, this);
+			// Show the question
+			populateTextView(questionView, currentQuestion.question);
+			populateTextView(answerView, getResources().getString(R.string.answer_pre_text));
+			actionBar.setTitle("JavaInfo " + (QuestionUtil.totalQuestions - questionList.size()) + "/" + QuestionUtil.totalQuestions);
 		}
-		
-		QuestionUtil.totalQuestions = questionList.size();
-
-		populateTextView(questionView, String.format(getResources().getString(R.string.question_pre_text), QuestionUtil.totalQuestions));
-		populateTextView(answerView, getResources().getString(R.string.answer_pre_text));
 	}
 
 	public void showNextQuestion() {
