@@ -4,4 +4,6 @@
     <color name="light_text">#ffeeeeee</color>
     <color name="dark_text">#ff333333</color>
     <color name="text_background">#ffffffff</color>
+    <color name="button_pressed">#ff8888ff</color>
+    <color name="button_normal">#ffbbbbff</color>
 </resources>

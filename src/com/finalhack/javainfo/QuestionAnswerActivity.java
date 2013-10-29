@@ -21,6 +21,7 @@ public class QuestionAnswerActivity extends Activity {
 	private static final String METHOD_STAR = "flipStarSetting";
 	private static final String METHOD_NEXT = "showNextQuestion";
 	public static final String EXTRA_KEY_SUBJECT = "subject";
+	public static final String EXTRA_KEY_SEARCH = "search";
 
 	// Shared preferences info
 	public static final String SHARED_PREFS_LOCATION = "sharedPrefs";
@@ -181,13 +182,22 @@ public class QuestionAnswerActivity extends Activity {
 
 		// Find out what subject matter we should be displaying
 		String subject = getIntent().getExtras().getString(EXTRA_KEY_SUBJECT);
-
-		// Lookup all questions for the subject
+		String searchText = getIntent().getExtras().getString(EXTRA_KEY_SEARCH);
+		
+		// Get all the questions for later filtering
 		List<String> allQuestions = QuestionUtil.getQuestionList();
-		questionList = QuestionUtil.getQuestionList(allQuestions, subject, this);
+		
+		// If there is no subject, it is a custom search
+		if (subject == null) {
+			questionList = QuestionUtil.getSearchedQuestions(allQuestions, searchText, this);
+		} else {
+			// Lookup all questions for the subject
+			questionList = QuestionUtil.getQuestionList(allQuestions, subject, this);
+		}
+		
 		QuestionUtil.totalQuestions = questionList.size();
 
-		populateTextView(questionView, getResources().getString(R.string.question_pre_text));
+		populateTextView(questionView, String.format(getResources().getString(R.string.question_pre_text), QuestionUtil.totalQuestions));
 		populateTextView(answerView, getResources().getString(R.string.answer_pre_text));
 	}
 

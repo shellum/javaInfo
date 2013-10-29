@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -14,7 +15,7 @@ public class QuestionUtil {
     
     public static String CURRENT_QUESTION_ID = null;
     public static int totalQuestions = 0;
-
+    private static List<Question> lowerCaseQuestions;
 
     private static final String STARRED_QUESTIONS = "*Starred Questions";
     //These constants are used for parsing raw questions
@@ -102,6 +103,41 @@ public class QuestionUtil {
         }
 
         return questionList;
+    }
+    
+    public synchronized static List<Question> getSearchedQuestions(List<String> rawQuestions, String searchText, Context context)
+    {
+        List<Question> questionList = new ArrayList<Question>();
+        
+        if (lowerCaseQuestions == null) {
+        	lowerCaseQuestions = new ArrayList<Question>();
+        	// For each raw question, parse it and categorize it
+            for (String rawQuestion : rawQuestions)
+            {
+                // There should be three parts (subject, question, and answer)
+                String[] questionParts = rawQuestion.split("~");
+                // If there are not three parts, skip that question
+                if (questionParts.length < 3)
+                    continue;
+
+                String subject = questionParts[INDEX_SUBJECT];
+                String question = questionParts[INDEX_QUESTION];
+                String answer = questionParts[INDEX_ANSWER];
+                String index = questionParts[INDEX_INDEX];
+                
+               	lowerCaseQuestions.add(new Question(subject + ": " + question.toLowerCase(Locale.getDefault()), answer, subject, index));
+            }
+        }
+        
+        // For each raw question, parse it and categorize it
+        for (Question question : lowerCaseQuestions)
+        {
+        	if (question.question.indexOf(searchText) >= 0) {
+        		questionList.add(question);
+        	}
+        	
+        }
+    	return questionList;
     }
 	
 	//Load all questions into their own parsed subject lists

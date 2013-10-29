@@ -10,8 +10,10 @@
 	<string name="new_subject">New Subject</string>
 	<string name="test">test</string>
 	<string name="answer_pre_text">Tap here for answer</string>
-	<string name="question_pre_text">To see the first question, tap here.&lt;br&gt;&lt;br&gt;You can always tap here to go to the next question</string>
+	<string name="question_pre_text">There are %s question/answer pairs.&lt;br&gt;To see the first question, tap here.&lt;br&gt;&lt;br&gt;You can always tap here to go to the next question</string>
 	<string name="question_post_text">There are no more questions in this section</string>
     <string name="menu_question_feedback">Submit feedback</string>
     <string name="menu_submit_question">Submit new question</string>
+    <string name="search_hint">Search for questions</string>
+    <string name="result_suffix"> results -&gt;</string>
 </resources>
