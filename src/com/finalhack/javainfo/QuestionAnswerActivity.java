@@ -208,7 +208,7 @@ public class QuestionAnswerActivity extends Activity {
 			
 			// If there is no subject, it is a custom search
 			if (subject == null) {
-				questionList = QuestionUtil.getSearchedQuestions(allQuestions, searchText, this);
+				questionList = QuestionUtil.getSearchedQuestions(allQuestions, searchText.toLowerCase(), this);
 			} else {
 				// Lookup all questions for the subject
 				questionList = QuestionUtil.getQuestionList(allQuestions, subject, this);
